@@ -1,5 +1,3 @@
-// models/User.js (ES6 module version)
-
 import { mongoose } from 'mongoose'
 
 const UserSchema = new mongoose.Schema(

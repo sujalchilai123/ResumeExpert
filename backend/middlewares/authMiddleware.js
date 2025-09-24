@@ -1,5 +1,3 @@
-// middlewares/authMiddleware.js (ES6 module version)
-
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 

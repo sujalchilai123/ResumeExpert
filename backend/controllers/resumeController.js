@@ -6,7 +6,6 @@ export const createResume = async (req, res) => {
     try {
         const { title } = req.body;
 
-        // Default template
         const defaultResumeData = {
             profileInfo: {
                 profileImg: null,
@@ -116,10 +115,8 @@ export const updateResume = async (req, res) => {
             return res.status(404).json({ message: 'Resume not found or unauthorized' });
         }
 
-        // Merge updates from req.body into existing resume
         Object.assign(resume, req.body);
 
-        // Save updated resume
         const savedResume = await resume.save();
         res.json(savedResume);
     } catch (error) {
@@ -138,10 +135,8 @@ export const deleteResume = async (req, res) => {
             return res.status(404).json({ message: 'Resume not found or unauthorized' });
         }
 
-        // Folder where uploads are stored
         const uploadsFolder = path.join(process.cwd(), 'uploads');
 
-        // Delete thumbnail image
         if (resume.thumbnailLink) {
             const oldThumbnail = path.join(uploadsFolder, path.basename(resume.thumbnailLink));
             if (fs.existsSync(oldThumbnail)) {
@@ -149,7 +144,6 @@ export const deleteResume = async (req, res) => {
             }
         }
 
-        // Delete profile preview image
         if (resume.profileInfo?.profilePreviewUrl) {
             const oldProfile = path.join(
                 uploadsFolder,
@@ -160,7 +154,6 @@ export const deleteResume = async (req, res) => {
             }
         }
 
-        // Delete the resume document
         const deleted = await Resume.findOneAndDelete({
             _id: req.params.id,
             userId: req.user._id,

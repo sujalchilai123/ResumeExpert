@@ -1,5 +1,3 @@
-// models/Resume.js (ES6 module version)
-
 import mongoose from "mongoose";
 
 const ResumeSchema = new mongoose.Schema(

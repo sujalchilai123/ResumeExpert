@@ -1,10 +1,8 @@
-// controllers/authController.js (ES6 module version)
 
 import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-// Generate JWT token
 const generateToken = (userId) => {
     return jwt.sign({ id: userId }, process.env.JWT_SECRET, { expiresIn: '7d' });
 };
@@ -22,19 +20,19 @@ export const registerUser = async (req, res) => {
             return res.status(400).json({ success: false, message: "Password must be at least 8 characters." });
         }
 
-        // Hash password
+        
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
-        console.log("📌 Creating user...");
-        // Create new user
+        console.log(" Creating user...");
+        
         const user = await User.create({
             name,
             email,
             password: hashedPassword,
         });
-        console.log("✅ Saved User:", user);
+        console.log("Saved User:", user);
         
-        // Return user data with JWT
+        
         res.status(201).json({
             _id: user._id,
             name: user.name,
@@ -57,13 +55,14 @@ export const loginUser = async (req, res) => {
             return res.status(500).json({ message: "Invalid email or password" });
         }
 
-        // Compare password
+        
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
             return res.status(500).json({ message: "Invalid email or password" });
         }
 
-        // Return user data with JWT
+        
+        
         res.json({
             _id: user._id,
             name: user.name,
