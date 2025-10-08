@@ -59,10 +59,10 @@ It provides multiple templates, real-time preview, and download functionality fo
 ## 🌐 Using Deployed Backend / Live Site
 
 - Frontend environment (`client/.env`) for deployed backend:  
-`VITE_BASE_URL=https://resumeexpert-backend.onrender.com`
+VITE_BASE_URL=https://resumeexpert-backend.onrender.com
 
 - Access live site:  
-`https://resumeexpert-frontend.onrender.com`  
+https://resumeexpert-frontend.onrender.com  
 
 All API calls will automatically use the deployed backend URL.
 
