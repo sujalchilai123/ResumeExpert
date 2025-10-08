@@ -28,42 +28,45 @@ It provides multiple templates, real-time preview, and download functionality fo
 
 ## ⚙️ Installation & Setup (Run Locally)
 
-Follow these steps to run the project locally on your machine:
+1. Clone the repository:  
+`git clone https://github.com/sujalchilai123/resume-builder.git`  
+`cd resume-builder`
 
-1. Clone the repository  
-   git clone https://github.com/sujalchilai123/resume-builder.git  
-   cd resume-builder  
+2. Install dependencies:  
+- Backend (inside `server` folder):  
+`cd server`  
+`npm install`  
+- Frontend (inside `client` folder):  
+`cd ../client`  
+`npm install`
 
-2. Install dependencies  
-   - For backend (inside `server` folder):  
-     cd server  
-     npm install  
+3. Configure environment variables:  
+- Backend (`server/.env`):  
+`MONGO_URI=your_mongodb_connection_string`  
+`JWT_SECRET=your_jwt_secret`  
+- Frontend (`client/.env` for local backend):  
+`VITE_BASE_URL=http://localhost:5000`
 
-   - For frontend (inside `client` folder):  
-     cd ../client  
-     npm install  
+4. Start development servers:  
+- Backend: `cd server` → `npm start`  
+- Frontend: `cd ../client` → `npm start`
 
-3. Configure environment variables  
-   Inside the `server` folder, create a `.env` file and add:  
-   MONGO_URI=your_mongodb_connection_string  
-   JWT_SECRET=you_jwt_secret 
+5. Open in browser:  
+`http://localhost:5173`
 
-   (Replace `your_mongodb_connection_string` with your actual MongoDB connection string from MongoDB Atlas or local setup.)
+---
 
-5. Start the development servers  
-   - Start backend:  
-     cd server  
-     npm start  
+## 🌐 Using Deployed Backend / Live Site
 
-   - Start frontend:  
-     cd ../client  
-     npm start  
+- Frontend environment (`client/.env`) for deployed backend:  
+`VITE_BASE_URL=https://resumeexpert-backend.onrender.com`
 
-6. Open in browser  
-   Once both servers are running, open:  
-   http://localhost:5173  
+- Access live site:  
+`https://resumeexpert-frontend.onrender.com`  
 
+All API calls will automatically use the deployed backend URL.
 
+---
 
 
 
