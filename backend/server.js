@@ -27,18 +27,18 @@ app.use(express.json());
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/resume', resumeRoutes);
-
+const FRONTEND_URL = process.env.FRONTEND_URL
 // Server uploads folder
 app.use(
   '/uploads',
   express.static(path.join(__dirname, 'uploads'), {
     setHeaders: (res, _path) => {
-      res.set('Access-Control-Allow-Origin', 'https://resumexpert-frontend.onrender.com');
+      res.set('Access-Control-Allow-Origin', FRONTEND_URL);
     },
   })
 );
 
-// ✅ API Root Route
+
 app.get('/', (req, res) => {
   res.send('API WORKING');
 });
