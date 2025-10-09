@@ -40,7 +40,7 @@ export const registerUser = async (req, res) => {
         });
 
     } catch (error) {
-        console.error("❌ Error in registerUser:", error);
+        console.error("Error in registerUser:", error);
         res.status(500).json({ message: "Server error", error: error.message });
     }
 };
@@ -51,13 +51,13 @@ export const loginUser = async (req, res) => {
 
         const user = await User.findOne({ email });
         if (!user) {
-            return res.status(500).json({ message: "Invalid email or password" });
+            return res.status(500).json({ message: "No user Found" });
         }
 
         
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
-            return res.status(500).json({ message: "Invalid email or password" });
+            return res.status(500).json({ message: "Wrong password" });
         }
 
         
